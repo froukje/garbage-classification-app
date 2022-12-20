@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  bento:
+    image: garbage_classification_service:nnarakeap2ra6wew
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+
+  streamlit:
+    image: streamlit_app:v1
+#    command: bash -c "streamlit run streamlit_app.py"
+    ports:
+      - 8501:8501
+    environment:
+      - API_ENDPOINT=bento:3000/predict
+    depends_on:
+      - bento
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+

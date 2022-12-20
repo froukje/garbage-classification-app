@@ -1,0 +1,11 @@
+service: "service.py:service"
+labels:
+  owner: frauke
+  project: garbage-classification
+include:
+- "*.py"
+python:
+  packages:
+    - torch==1.13.0
+    - torchvision==0.14.0  
+    - Pillow==9.2.0

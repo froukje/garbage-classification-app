@@ -1,0 +1,21 @@
+name: streamlit_deploy
+
+channels:
+  - default
+  - pytorch  
+dependencies:
+  - python=3.9
+  - pylint
+  - black
+  - isort
+  - matplotlib 
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pip
+  - pip:
+    - mlflow
+    - torchvision
+    - bentoml
+    - pre-commit
+
