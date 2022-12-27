@@ -5,8 +5,9 @@ from io import BytesIO
 from skimage.io import imread
 #import matplotlib.image as mpimg
 
-#url = "http://127.0.0.1:3000/predict"
-url = os.getenv('API_ENDPOINT', 'http://127.0.0.1:3000/predict')
+url = "http://127.0.0.1:8501" 
+#3000/predict"
+#url = os.getenv('API_ENDPOINT', 'http://127.0.0.1:3000/predict')
 print("API_ENDPOINT", os.getenv('API_ENDPOINT'))
 print("URL", url)
 #img = '/home/frauke/pytorch-introduction/data/garbage/extra/img1.jpeg'

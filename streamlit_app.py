@@ -5,10 +5,6 @@ import requests
 import streamlit as st
 from PIL import Image
 
-#url = 'http://127.0.0.1:3000/predict' 
-url = os.getenv('API_ENDPOINT', 'http://127.0.0.1:3000/predict')
-#url = 'http://garbage_classification_service:nnarakeap2ra6wew:3000/predict'
-
 # Create the header page content
 st.title("Garbage Classification App")
 st.markdown(
@@ -26,6 +22,8 @@ def predict(img):
     """
     A function that sends a prediction request to the API and returns the gabage class.
     """
+
+    url = os.getenv('API_ENDPOINT', 'http://127.0.0.1:3000/predict')
 
     # Convert the bytes image to a NumPy array
     bytes_image = img.getvalue()

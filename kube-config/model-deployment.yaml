@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: garbage-classification-model
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: garbage-classification-model
+  template:
+    metadata:
+      labels:
+        app: garbage-classification-model
+    spec:
+      containers:
+      - name: garbage-classification-model
+        image: garbage_classification_service:nnarakeap2ra6wew
+        #resources:
+        #  limits:
+        #    memory: "2048Mi"
+        #    cpu: "1"
+        ports:
+        - containerPort: 3000

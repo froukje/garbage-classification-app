@@ -59,6 +59,19 @@ docker build -t streamlit_app:v1 .
 ####
 kubernetes
 
+# create config files stored in "kube-config"
+
+# locally using kind: crate a cluster:
+kind create cluster --name=gc-cluster
+
+# make images available
+kind load docker-image garbage-classification:nnarakeap2ra6wew --name gc-cluster
+kind load docker-image streamlit_app:v1 --name gc-cluster
+
+# apply deployment and service
+kubectl apply -f model-deployment.yaml
+kubectl apply -f model-service.yaml
+
 ####
 heroku
 

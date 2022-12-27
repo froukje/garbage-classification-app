@@ -3,17 +3,28 @@ services:
   bento:
     image: garbage_classification_service:nnarakeap2ra6wew
     ports:
-      - 3000:3000
+      - "3000:3000"
+#    volumes:
+#      - "/home/bentoml/bento/:/app/"
     networks:
       - backend
 
   streamlit:
-    image: streamlit_app:v1
-#    command: bash -c "streamlit run streamlit_app.py"
+    build: .      
+#    image: streamlit_app:v1
+    command: bash -c "streamlit run streamlit_app.py"
     ports:
-      - 8501:8501
+      - "8501:8501"  
     environment:
-      - API_ENDPOINT=bento:3000/predict
+            - API_ENDPOINT=http://bento:3000/predict
+    depends_on:
+      - bento
+    networks:
+      - backend
+
+  curl:
+    image: curlimages/curl 
+    command: http://bento:3000
     depends_on:
       - bento
     networks:
